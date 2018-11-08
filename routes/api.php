@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api', 'scopes:read-users,create-users,delete-users,secret-scope')->get('/user', function (Request $request) {
+    //return 'working';
+    //dd($request->user()->tokenCan('create-usersa'));
     return $request->user();
 });

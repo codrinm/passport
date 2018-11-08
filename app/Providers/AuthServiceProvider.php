@@ -27,6 +27,13 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Passport::routes();
-        //
+        //Passport::enableImplicitGrant();
+        
+        Passport::tokensCan([
+            'read-users' => 'Read',
+            'create-users' => 'Create',
+            'delete-users' => 'Delete',
+            'secret-scope' => 'Secret'
+        ]);
     }
 }
