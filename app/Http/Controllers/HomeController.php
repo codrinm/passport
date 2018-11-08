@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 
@@ -32,6 +33,15 @@ class HomeController extends Controller
 
         //Redis::set('name', 'Taylor');
         //dd(Redis::get('name'));
+
+        // Add scope manually
+        // $tab = DB::table('oauth_access_tokens')->where('user_id', '5')->first();
+        // $scopes = json_decode($tab->scopes, true);
+        // array_push($scopes, "pushed-scope");
+        // $scopes_db = json_encode($scopes);
+        // DB::table('oauth_access_tokens')->where('user_id', '5')->update(['scopes' => $scopes_db]);
+
+
         return view('home');
     }
 
